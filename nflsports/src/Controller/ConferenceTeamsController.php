@@ -6,12 +6,12 @@ use Drupal\Component\Utility\UrlHelper;
 class ConferenceTeamsController extends ControllerBase {
     public function conferenceTeams($conference = null,$division = null) {
     	$request = \Drupal::request();
-        $config = \Drupal::config('nflsports.settings');
+      $config = \Drupal::config('nflsports.settings');
     	$session = $request->getSession();
     	$teams = $session->get('nflteams');
     	$divisions = $session->get('divisions');
     	$index = 0;
-        //Populating Teams List Data
+      //Populating Teams List Data
     	foreach ($teams as $key => $value) {
     		if($value->conference == $conference && $division == null) {
     			$teamsData[$index]['name'] = $value->name;
@@ -30,6 +30,7 @@ class ConferenceTeamsController extends ControllerBase {
     			$index = $index + 1;
     		}
     	}
+      //Retrieving the National and american images from config
       if(!empty($config->get('national_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('national_football_image')[0]);
           $path = $file->getFileUri();
