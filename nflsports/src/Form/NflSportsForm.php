@@ -52,7 +52,7 @@ class NflSportsForm extends ConfigFormBase {
     ];
     $form['homepage_image'] = [
       '#type' => 'managed_file',
-      '#title' => t('HpmePage Image'),
+      '#title' => t('HomePage Image'),
       '#upload_location' => 'public://',
       '#default_value' => $config->get('homepage_image'),
     ];

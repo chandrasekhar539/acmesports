@@ -17,8 +17,10 @@ class HomePageController extends ControllerBase {
       $config_array['api_key'] = $config->get('api_key');
       if(!empty($config->get('homepage_image')[0])) {
         $file = \Drupal\file\Entity\File::load($config->get('homepage_image')[0]);
-        $path = $file->getFileUri();
-        $homepage_image = explode('public:/', $path)[1];
+        if(!empty($file)) {
+          $path = $file->getFileUri();
+          $homepage_image = explode('public:/', $path)[1];
+        }
       }
       $config_array['homepage_image'] = $homepage_image;
     	$params = array('api_key' => $api_key);

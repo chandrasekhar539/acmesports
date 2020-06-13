@@ -33,13 +33,17 @@ class ConferenceTeamsController extends ControllerBase {
       //Retrieving the National and American Football images from config
       if(!empty($config->get('national_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('national_football_image')[0]);
-          $path = $file->getFileUri();
-          $config_array['national_image'] = explode('public:/', $path)[1];
+          if(!empty($file)) {
+            $path = $file->getFileUri();
+            $config_array['national_image'] = explode('public:/', $path)[1];
+          }
       }
       if(!empty($config->get('american_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('american_football_image')[0]);
-          $path = $file->getFileUri();
-          $config_array['american_image'] = explode('public:/', $path)[1];
+          if(!empty($file)) {
+            $path = $file->getFileUri();
+            $config_array['american_image'] = explode('public:/', $path)[1];
+          }
       }
     	return [
       	  '#theme' => 'conference_teams_page',
