@@ -30,7 +30,7 @@ class ConferenceTeamsController extends ControllerBase {
     			$index = $index + 1;
     		}
     	}
-      //Retrieving the National and american images from config
+      //Retrieving the National and American Football images from config
       if(!empty($config->get('national_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('national_football_image')[0]);
           $path = $file->getFileUri();
