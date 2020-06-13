@@ -11,6 +11,7 @@
     <div class="header-text">{{ conference }} Teams</div>
   </div>
 </div>
+{# Filter option based on division #}
 <div class="row teams-data">
   <div class="col-sm-2 sidebar">
     {% for division in divisions %}
@@ -19,7 +20,7 @@
       </div>
     {% endfor %}
   </div>
-
+{# Teams List based on Conference and division #}
   <div class="row col-sm-10 conference-teams">
     {% for teams in content %}
       <div class="col-sm-3 team">
