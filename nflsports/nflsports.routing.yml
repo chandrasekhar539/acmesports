@@ -1,0 +1,22 @@
+nflsports.homepage:
+  path: '/homepage'
+  defaults:
+    _controller: '\Drupal\nflsports\Controller\HomePageController::homePage'
+  requirements:
+    _permission: 'access content'
+
+nflsports.conference_teams:
+  path: '/teams/{conference}/{division}'
+  defaults:
+    _controller: '\Drupal\nflsports\Controller\ConferenceTeamsController::conferenceTeams'
+    division: null
+  requirements:
+    _permission: 'access content'
+
+nflsports.config:
+  path: '/admin/config/nflsports'
+  defaults:
+    _form: '\Drupal\nflsports\Form\NflSportsForm'
+    _title: 'NFL Sports'
+  requirements:
+    _permission: 'administer site configuration'

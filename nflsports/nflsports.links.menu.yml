@@ -1,0 +1,5 @@
+nflsports.config:
+  title: 'NFL Sports Configurations'
+  description: 'Custom configurations.'
+  route_name: nflsports.config
+  parent: system.admin_config_development

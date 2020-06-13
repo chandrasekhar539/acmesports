@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implement hook_theme
+ *
+ */
+function nflsports_theme($existing, $type, $theme, $path) {
+    return array(
+        'home_page' => array(
+            'variables' => array(
+                'content' => NULL,
+                'config' => NULL,
+            ),
+        ),
+        'conference_teams_page' => array(
+            'variables' => array(
+                'content' => NULL,
+                'conference' => NULL,
+                'selecteddivision' => NULL,
+                'divisions' => NULL,
+                'config' => NULL,
+            ),
+        ),
+    );
+}

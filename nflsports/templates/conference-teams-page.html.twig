@@ -1,0 +1,38 @@
+{% if conference == 'National Football Conference' %}
+  {% set config_image = config['national_image'] %}
+{% elseif conference == 'American Football Conference' %}
+  {% set config_image = config['american_image'] %}
+{% endif %}
+<div class="row header">
+  <div class="col-sm-8">
+    <img class="header-image" src="/sites/default/files{{ config_image }}">
+  </div>
+  <div class="col-sm-4">
+    <div class="header-text">{{ conference }} Teams</div>
+  </div>
+</div>
+<div class="row teams-data">
+  <div class="col-sm-2 sidebar">
+    {% for division in divisions %}
+      <div class="mx-auto w-80 p-3 bg-dark text-white text-center divisions">
+         <a href="/teams/{{ conference }}/{{ division }}" class="{% if division == selecteddivision %}active{% endif %}">{{ division }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="row col-sm-10 conference-teams">
+    {% for teams in content %}
+      <div class="col-sm-3 team">
+        <div class="nickname">{{ teams['nickname'] }}</div>
+        <div class="team-name">
+          <span class='label'>Name:</span>
+          <span class="team-data">{{ teams['name'] }}</span>
+        </div>
+        <div class="division">
+          <span class='label'>Division:</span>
+          <span class="team-data">{{ teams['division'] }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

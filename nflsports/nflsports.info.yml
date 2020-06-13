@@ -1,0 +1,6 @@
+name: NFL Sports
+type: module
+description: "Show list of teams and its details from remote API"
+package: Custom
+version: VERSION
+core: 8.x
