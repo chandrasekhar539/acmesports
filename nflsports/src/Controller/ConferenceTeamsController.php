@@ -1,9 +1,7 @@
 <?php
-
 namespace Drupal\nflsports\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Component\Utility\UrlHelper;
-
 
 class ConferenceTeamsController extends ControllerBase {
     public function conferenceTeams($conference = null,$division = null) {
@@ -32,17 +30,16 @@ class ConferenceTeamsController extends ControllerBase {
     			$index = $index + 1;
     		}
     	}
-        if(!empty($config->get('national_football_image')[0])) {
+      if(!empty($config->get('national_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('national_football_image')[0]);
           $path = $file->getFileUri();
           $config_array['national_image'] = explode('public:/', $path)[1];
-        }
-        if(!empty($config->get('american_football_image')[0])) {
+      }
+      if(!empty($config->get('american_football_image')[0])) {
           $file = \Drupal\file\Entity\File::load($config->get('american_football_image')[0]);
           $path = $file->getFileUri();
           $config_array['american_image'] = explode('public:/', $path)[1];
-        }        
-
+      }
     	return [
       	  '#theme' => 'conference_teams_page',
           '#attached' => [
@@ -52,8 +49,7 @@ class ConferenceTeamsController extends ControllerBase {
           '#conference' => $conference,
           '#selecteddivision' => $division,
           '#divisions' => $divisions,
-          '#config' => $config_array,
-          '#cache' => ['max-age' => 0,]
+          '#config' => $config_array
     	];
     }
 }

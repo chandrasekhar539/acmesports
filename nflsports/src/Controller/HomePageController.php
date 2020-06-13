@@ -1,9 +1,7 @@
 <?php
-
 namespace Drupal\nflsports\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Component\Utility\UrlHelper;
-
 
 class HomePageController extends ControllerBase {
     public function homePage() {
@@ -38,6 +36,7 @@ class HomePageController extends ControllerBase {
     		$conferences[] = $value->conference;
     		$divisions[] = $value->division;
     	}
+      //To remove duplicate entries in array
     	$conferences = array_unique($conferences);
     	$divisions = array_unique($divisions);
     	//storing necessary data in a session to reuse the data to avoid api call multiple times
