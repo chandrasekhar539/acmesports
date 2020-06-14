@@ -9,6 +9,7 @@ namespace Drupal\nflsports\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 /**
  * Configure nflsports settings for this site.
@@ -75,6 +76,25 @@ class NflSportsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+      //save images permanently
+      $homeimage = $form_state->getValue('homepage_image');
+      $nationalimage = $form_state->getValue('national_football_image');
+      $americanimage = $form_state->getValue('american_football_image');
+      if (!empty($homeimage[0])) {
+        $file = File::load($homeimage[0]);
+        $file->setPermanent();
+        $file->save();
+      }
+      if (!empty($nationalimage[0])) {
+        $file = File::load($nationalimage[0]);
+        $file->setPermanent();
+        $file->save();
+      }
+      if (!empty($americanimage[0])) {
+        $file = File::load($americanimage[0]);
+        $file->setPermanent();
+        $file->save();
+      }
       // Retrieve the configuration
        $this->configFactory->getEditable('nflsports.settings')
       ->set('homepage_header_text', $form_state->getValue('homepage_header_text'))
